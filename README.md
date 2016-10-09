@@ -1,85 +1,86 @@
-ï»¿#Description
+#Description
 The distributed operation layer (DOL) is a software development framework to program parallel applications. The DOL allows to specify applications based on the Kahn process network model of computation and features a simulation engine based on SystemC. Moreover, the DOL provides an XML-based specification format to describe the implementation of a parallel application on a multi-processor systems, including binding and mapping.
 
 #How to install
-##  1. å®‰è£…linuxç³»ç»Ÿ
-### ç”¨è™šæ‹Ÿæœºå®‰è£…ubuntu
-##  2. å®‰è£…ä¸€äº›å¿…è¦çš„ç¯å¢ƒ
+##  1. °²×°linuxÏµÍ³
+### ÓÃĞéÄâ»ú°²×°ubuntu
+##  2. °²×°Ò»Ğ©±ØÒªµÄ»·¾³
 ```
 $ sudo apt-get update
 $ sudo apt-get install ant
 $ sudo apt-get install openjdk-7-jdk
 $ sudo apt-get install unzip
 ```
-## 3. ä¸‹è½½æ–‡ä»¶
+## 3. ÏÂÔØÎÄ¼ş
 ```
 $ sudo wget http://www.accellera.org/images/downloads/standards/systemc/systemc-2.3.1.tgz
 $ sudo wget http://www.tik.ee.ethz.ch/~shapes/downloads/dol_ethz.zip
 ```
-## 4. è§£å‹æ–‡ä»¶
-### æ–°å»ºdolçš„æ–‡ä»¶å¤¹ 
+## 4. ½âÑ¹ÎÄ¼ş
+### ĞÂ½¨dolµÄÎÄ¼ş¼Ğ 
 ```
 $ mkdir dol
 ```
-### å°†dolethz.zipè§£å‹åˆ° dolæ–‡ä»¶å¤¹ä¸­
+### ½«dolethz.zip½âÑ¹µ½ dolÎÄ¼ş¼ĞÖĞ
 ```
 $ unzip dol_ethz.zip -d dol
 ```
-### è§£å‹systemc
+### ½âÑ¹systemc
 ```
 $ tar -zxvf systemc-2.3.1.tgz
 ```
-## 5. ç¼–è¯‘systemc
-### è§£å‹åè¿›å…¥systemc-2.3.1çš„ç›®å½•ä¸‹
+## 5. ±àÒësystemc
+### ½âÑ¹ºó½øÈësystemc-2.3.1µÄÄ¿Â¼ÏÂ
 ```
 $ cd systemc-2.3.1
 ```
-### æ–°å»ºä¸€ä¸ªä¸´æ—¶æ–‡ä»¶å¤¹objdir
+### ĞÂ½¨Ò»¸öÁÙÊ±ÎÄ¼ş¼Ğobjdir
 ```
 $ mkdir objdir
 ```
-###è¿›å…¥è¯¥æ–‡ä»¶å¤¹objdir
+###½øÈë¸ÃÎÄ¼ş¼Ğobjdir
 ```
 $ cd objdir
 ```
-###è¿è¡Œconfigure(èƒ½æ ¹æ®ç³»ç»Ÿçš„ç¯å¢ƒè®¾ç½®ä¸€ä¸‹å‚æ•°ï¼Œç”¨äºç¼–è¯‘)
+###ÔËĞĞconfigure(ÄÜ¸ù¾İÏµÍ³µÄ»·¾³ÉèÖÃÒ»ÏÂ²ÎÊı£¬ÓÃÓÚ±àÒë)
 ```
 $ ../configure CXX=g++ --disable-async-updates
 ```
-###ç¼–è¯‘
+###±àÒë
 ```
 $ sudo make install
 ```
-###è®°å½•å½“å‰çš„å·¥ä½œè·¯å¾„(ä¼šè¾“å‡ºå½“å‰æ‰€åœ¨è·¯å¾„ï¼Œè®°ä¸‹æ¥ï¼Œå¾…ä¼šæœ‰ç”¨)
+###¼ÇÂ¼µ±Ç°µÄ¹¤×÷Â·¾¶(»áÊä³öµ±Ç°ËùÔÚÂ·¾¶£¬¼ÇÏÂÀ´£¬´ı»áÓĞÓÃ)
 ```
 $ pwd
 ```
-##6. ç¼–è¯‘dol
-###è¿›å…¥åˆšåˆšdolçš„æ–‡ä»¶å¤¹
+##6. ±àÒëdol
+###½øÈë¸Õ¸ÕdolµÄÎÄ¼ş¼Ğ
 ```
 $ cd ../dol
 ```
-###ä¿®æ”¹build_zip.xmlæ–‡ä»¶,æ‰¾åˆ°ä¸‹é¢è¿™æ®µè¯ï¼Œå°±æ˜¯è¯´ä¸Šé¢ç¼–è¯‘çš„systemcä½ç½®åœ¨å“ªé‡Œï¼Œ
+###ĞŞ¸Äbuild_zip.xmlÎÄ¼ş,ÕÒµ½ÏÂÃæÕâ¶Î»°£¬¾ÍÊÇËµÉÏÃæ±àÒëµÄsystemcÎ»ÖÃÔÚÄÄÀï£¬
 ```
 <property name="systemc.inc" value="YYY/include"/>
 <property name="systemc.lib" value="YYY/lib-linux/libsystemc.a"/>
 ```
-###æŠŠYYYæ”¹æˆä¸Šé¡µpwdçš„ç»“æœï¼ˆæ³¨æ„ï¼Œå¯¹äº  64ä½ ç³»ç»Ÿçš„æœºå™¨ï¼Œlib-linuxè¦æ”¹æˆlib-linux64ï¼‰
-###ç„¶åæ˜¯ç¼–è¯‘
+###°ÑYYY¸Ä³ÉÉÏÒ³pwdµÄ½á¹û£¨×¢Òâ£¬¶ÔÓÚ  64Î» ÏµÍ³µÄ»úÆ÷£¬lib-linuxÒª¸Ä³Élib-linux64£©
+###È»ºóÊÇ±àÒë
 ```
 $ ant -f build_zip.xml all
 ```
-###è‹¥æˆåŠŸä¼šæ˜¾ç¤ºbuild successful
-###æ¥ç€å¯ä»¥è¯•è¯•è¿è¡Œç¬¬ä¸€ä¸ªä¾‹å­
-è¿›å…¥build/bin/mianè·¯å¾„ä¸‹
+###Èô³É¹¦»áÏÔÊ¾build successful
+###½Ó×Å¿ÉÒÔÊÔÊÔÔËĞĞµÚÒ»¸öÀı×Ó
+½øÈëbuild/bin/mianÂ·¾¶ÏÂ
 ```
 $ cd build/bin/main
 ```
-###ç„¶åè¿è¡Œç¬¬ä¸€ä¸ªä¾‹å­
+###È»ºóÔËĞĞµÚÒ»¸öÀı×Ó
 ```
 $ ant -f runexample.xml -Dnumber=1
 ```
 
 #Experimental experience
-#### 1. çœ‹æ•™ç¨‹æ—¶ä¸€å®šè¦ä»”ç»†ï¼Œä»»ä½•ä¸€ä¸ªç»†èŠ‚å¼„é”™äº†éƒ½å¯èƒ½å¯¼è‡´æœ€ç»ˆç»“æœçš„é”™è¯¯ã€‚
-#### 2. çœ‹æ•™ç¨‹æ—¶è¦çµæ´»ï¼Œä¸èƒ½å°†æ•™ç¨‹ç…§æ¬è¿‡æ¥ï¼Œè¦ç»“åˆè‡ªå·±çš„ç¯å¢ƒã€‚
+#### 1. ±¾´ÎÊµÑé£¬ÎÒÊÇÖ±½Ó´Ó¿Î³ÌÈºÉÏÏÂÔØÓÉÊ¦ĞÖÅäÖÃºÃµÄUbuntuÏµÍ³£¬²¢Î´Óöµ½¶àÉÙÕÏ°­¡£°²×°VMwareĞéÄâ»úºó£¬µ¼Èë½âÑ¹ºóµÄUbuntuÏµÍ³£¬¼ÇµÃµÚÒ»´Î¿ª»úºóÒªÖØĞÂÆô¶¯ÏµÍ³£¬·ñÔò²¿·ÖÅäÖÃÎÄ¼şÎŞ·¨ÔËĞĞ¡£
+#### 2. ²¿·Öº¬ÖĞÎÄµÄÎÄµµ´ò¿ªÊ±»áÏÔÊ¾ÂÒÂë£¬Ó¦½«ÎÄ¼ş±àÂë¸ÄÎªUTF-8£¬¼´¿ÉÕı³£ÏÔÊ¾¡£
+#### 3. ¹È¸èÉÏÓĞ½Ï¶àÏà¹Ø½Ì³Ì£¬½ÓÏÂÀ´µÄÊµÑéÖĞÓ¦½áºÏ×Ô¼ºµÄ»·¾³£¬¶à²éÑ¯Ïà¹Ø²©¿Í£¬×¢ÖØ¶ÔÏ¸½ÚµÄÀí½â¡£
