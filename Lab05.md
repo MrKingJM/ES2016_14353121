@@ -45,67 +45,27 @@ $ sudo apt-get install python-rosinstall
 ```
 $ roscore
 ```
-
-### 将dolethz.zip解压到 dol文件夹中
+#### 出现以下界面：
+![1](https://cloud.githubusercontent.com/assets/19356447/20218384/550fa362-a85f-11e6-9a0f-d5b1e4a731bc.png)
+### 2. 打开第二个终端，输入x以下指令，开启一个小乌龟界面：
 ```
-$ unzip dol_ethz.zip -d dol
+$ rosrun turtlesim turtlesim_node
 ```
-### 解压systemc
+#### 出现以下界面：
+![2](https://cloud.githubusercontent.com/assets/19356447/20218397/6e609114-a85f-11e6-8785-456b35c2de51.png)
+### 3. 打开第三个终端，输入以下指令，接收键盘输入，控制小乌龟移动。
 ```
-$ tar -zxvf systemc-2.3.1.tgz
+$ rosrun turtlesim turtle_teleop_key
 ```
-## 5. 编译systemc
-### 解压后进入systemc-2.3.1的目录下
+### 4. 选中最后打开的Terminal,键盘按下上下左右按键,可看到控制小乌龟移动。
+#### 出现以下界面：
+![3](https://cloud.githubusercontent.com/assets/19356447/20218406/8191cd7a-a85f-11e6-83ad-ca2f72c8f683.png)
+### 5. 打开第四个终端，输入以下指令，可以看到ROS nodes以及Topic等图形展示：
 ```
-$ cd systemc-2.3.1
+$ rosrun rqt_graph rqt_graph
 ```
-### 新建一个临时文件夹objdir
-```
-$ mkdir objdir
-```
-###进入该文件夹objdir
-```
-$ cd objdir
-```
-###运行configure(能根据系统的环境设置一下参数，用于编译)
-```
-$ ../configure CXX=g++ --disable-async-updates
-```
-###编译
-```
-$ sudo make install
-```
-###记录当前的工作路径(会输出当前所在路径，记下来，待会有用)
-```
-$ pwd
-```
-##6. 编译dol
-###进入刚刚dol的文件夹
-```
-$ cd ../dol
-```
-###修改build_zip.xml文件,找到下面这段话，就是说上面编译的systemc位置在哪里，
-```
-<property name="systemc.inc" value="YYY/include"/>
-<property name="systemc.lib" value="YYY/lib-linux/libsystemc.a"/>
-```
-###把YYY改成上页pwd的结果（注意，对于  64位 系统的机器，lib-linux要改成lib-linux64）
-###然后是编译
-```
-$ ant -f build_zip.xml all
-```
-###若成功会显示build successful
-###接着可以试试运行第一个例子
-进入build/bin/mian路径下
-```
-$ cd build/bin/main
-```
-###然后运行第一个例子
-```
-$ ant -f runexample.xml -Dnumber=1
-```
-
+#### 出现以下界面：
+![4](https://cloud.githubusercontent.com/assets/19356447/20218428/959405cc-a85f-11e6-995b-5e851dd524bf.png)
+至此，ROS配置就结束了，从测试中我们也可以看出安装是成功的。
 #Experimental experience
-#### 1. 本次实验，我是直接从课程群上下载由师兄配置好的Ubuntu系统，并未遇到多少障碍。安装VMware虚拟机后，导入解压后的Ubuntu系统，记得第一次开机后要重新启动系统，否则部分配置文件无法运行。
-#### 2. 部分含中文的文档打开时会显示乱码，应将文件编码改为UTF-8，即可正常显示。
-#### 3. 谷歌上有较多相关教程，接下来的实验中应结合自己的环境，多查询相关博客，注重对细节的理解。
+#### 1. 本次实验较为简单，基本上就是按照教程复制粘贴，安装过程中要注意细节，不要忽略步骤中出现的错误，不然最后测试时不容易查错。
