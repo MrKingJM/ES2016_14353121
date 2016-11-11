@@ -24,84 +24,29 @@ i=i*i*i
 #### (2) 这里需要注意一点，在运行修改后的代码前，首先需要删除main文件夹下的已存在的example文件，该文件的具体目录为dol/build/bin/main；
 #### (3) 运行修改后的代码，需要先进入文件所在目录，指令为cd dol/build/bin/main，运行example1,指令为sudo ant -f runexample.xml -Dnumber=1
 ### 4. 成功截图：
+![6](https://cloud.githubusercontent.com/assets/19356447/20219503/b1714110-a864-11e6-8f2d-18394ebb9729.png)
+从上图结果可以看到，生产者长度为20，输出了0-19每个数的三次方。
+### 4. example2代码分析
+```
+<variable value="3" name="N"/>  
+```
+以上源代码中定义了三个square模块.
+### 5. 修改example2源代码
+实验只需要输出2个square模块，所以只需要把value的值改为2即可，修改代码如下: 
+```
+<variable value="2" name="N"/>
+```
+### 6. 进行编译并运行修改后的代码
+运行指令为sudo ant -f runexample.xml -Dnumber=2
+### 7. 成功截图：
+![7](https://cloud.githubusercontent.com/assets/19356447/20219529/cea0c526-a864-11e6-8ad3-489d7a6fd2eb.png)
+### 8. dot文件
+#### (1) 在运行成功后，我们可以在dol/build/bin/main/example2的文件夹下，看到example2.dot文件。
+#### (2) 安装成功后，我们就可以双击打dot文件了！
+#### (3) 最后截图为：
+![5](https://cloud.githubusercontent.com/assets/19356447/20219485/a07f4668-a864-11e6-8c00-317d8eb85e5a.png)
 
-##  2. 安装一些必要的环境
-```
-$ sudo apt-get update
-$ sudo apt-get install ant
-$ sudo apt-get install openjdk-7-jdk
-$ sudo apt-get install unzip
-```
-## 3. 下载文件
-```
-$ sudo wget http://www.accellera.org/images/downloads/standards/systemc/systemc-2.3.1.tgz
-$ sudo wget http://www.tik.ee.ethz.ch/~shapes/downloads/dol_ethz.zip
-```
-## 4. 解压文件
-### 新建dol的文件夹 
-```
-$ mkdir dol
-```
-### 将dolethz.zip解压到 dol文件夹中
-```
-$ unzip dol_ethz.zip -d dol
-```
-### 解压systemc
-```
-$ tar -zxvf systemc-2.3.1.tgz
-```
-## 5. 编译systemc
-### 解压后进入systemc-2.3.1的目录下
-```
-$ cd systemc-2.3.1
-```
-### 新建一个临时文件夹objdir
-```
-$ mkdir objdir
-```
-###进入该文件夹objdir
-```
-$ cd objdir
-```
-###运行configure(能根据系统的环境设置一下参数，用于编译)
-```
-$ ../configure CXX=g++ --disable-async-updates
-```
-###编译
-```
-$ sudo make install
-```
-###记录当前的工作路径(会输出当前所在路径，记下来，待会有用)
-```
-$ pwd
-```
-##6. 编译dol
-###进入刚刚dol的文件夹
-```
-$ cd ../dol
-```
-###修改build_zip.xml文件,找到下面这段话，就是说上面编译的systemc位置在哪里，
-```
-<property name="systemc.inc" value="YYY/include"/>
-<property name="systemc.lib" value="YYY/lib-linux/libsystemc.a"/>
-```
-###把YYY改成上页pwd的结果（注意，对于  64位 系统的机器，lib-linux要改成lib-linux64）
-###然后是编译
-```
-$ ant -f build_zip.xml all
-```
-###若成功会显示build successful
-###接着可以试试运行第一个例子
-进入build/bin/mian路径下
-```
-$ cd build/bin/main
-```
-###然后运行第一个例子
-```
-$ ant -f runexample.xml -Dnumber=1
-```
 
 #Experimental experience
-#### 1. 本次实验，我是直接从课程群上下载由师兄配置好的Ubuntu系统，并未遇到多少障碍。安装VMware虚拟机后，导入解压后的Ubuntu系统，记得第一次开机后要重新启动系统，否则部分配置文件无法运行。
-#### 2. 部分含中文的文档打开时会显示乱码，应将文件编码改为UTF-8，即可正常显示。
+#### 1. 此次实验比较简单，且实验课TA也详细分析了每个example中的源代码及其实现功能
 #### 3. 谷歌上有较多相关教程，接下来的实验中应结合自己的环境，多查询相关博客，注重对细节的理解。
